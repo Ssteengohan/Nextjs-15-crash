@@ -16,9 +16,6 @@ const Navbar = async () => {
               <Link href="/start/create">
                 <span>Create</span>
               </Link>
-              <Link href={`/user/${session.user.id}`}>
-                <span>{session.user.name}</span>
-              </Link>
               <form
                 action={async () => {
                   "use server";
@@ -29,6 +26,9 @@ const Navbar = async () => {
                   <span>Log out</span>
                 </button>
               </form>
+              <Link href={`/user/${session.user.id}`}>
+                <span>{session.user.name}</span>
+              </Link>
             </div>
           ) : (
             <form
