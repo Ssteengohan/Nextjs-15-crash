@@ -1,0 +1,30 @@
+import { z } from 'zod';
+
+
+export const formSchema = z.object({
+    title: z.string().min(3).max(100),
+    description: z.string().min(20).max(500),
+    category: z.string().min(3).max(20),
+    link: z.string().url().refine(async (url) => {
+        // First check file extension
+        const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.bmp'];
+        const hasValidExtension = imageExtensions.some(ext => 
+            url.toLowerCase().endsWith(ext)
+        );
+
+        if (!hasValidExtension) return false;
+
+        // Then verify content type
+        try {
+            const res = await fetch(url, { method: "HEAD" });
+            const contentType = res.headers.get("content-type");
+            return contentType?.startsWith("image/") || contentType?.includes("webp");
+        } catch {
+            // If content-type check fails, at least we validated the extension
+            return hasValidExtension;
+        }
+    }, {
+        message: "URL must be a valid image link"
+    }),
+    pitch: z.string().min(10),
+});
