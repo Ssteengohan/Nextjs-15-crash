@@ -18,6 +18,7 @@ const nextConfig: NextConfig = {
   },
    experimental: {
     ppr: 'incremental',
+    esmExternals: 'loose',
   },
   devIndicators: {
     appIsrStatus: true,
