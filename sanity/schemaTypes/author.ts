@@ -1,3 +1,6 @@
+"use client";
+
+
 import { UserIcon } from "lucide-react";
 import { defineField, defineType } from "sanity";
 

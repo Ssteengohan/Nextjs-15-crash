@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import SearchFormReset from "./SearchFormReset";
 import {Search} from "lucide-react";
