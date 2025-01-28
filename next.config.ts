@@ -16,10 +16,8 @@ const nextConfig: NextConfig = {
       }
     ]
   },
-   transpilePackages: ['lucide-react'],
    experimental: {
     ppr: 'incremental',
-    esmExternals: 'loose',
   },
   devIndicators: {
     appIsrStatus: true,
