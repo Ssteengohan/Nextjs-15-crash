@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { BunnyImageInput } from "../components/BunnyImageInput";
 
 export const startup = defineType({
     name: 'startup',
@@ -36,8 +37,13 @@ export const startup = defineType({
         }),        
         defineField({
             name: 'image',
-            type: 'url',
+            type: 'string',
+            title: 'Image',
+            description: 'Upload an image to Bunny CDN',
             validation: (Rule) => Rule.required(),
+            components: {
+                input: BunnyImageInput,
+            }
         }),
         defineField({
             name: 'pitch',
